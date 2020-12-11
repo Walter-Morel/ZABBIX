@@ -1,0 +1,2 @@
+# ZABBIX
+Install ZABBIX agent.
