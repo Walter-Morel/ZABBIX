@@ -1,0 +1,56 @@
+Install nginx to Cent0S 7.
+
+Step 1. With the root user we install the EPEL repository
+  
+  yum -y install epel-release
+  
+Step 2. Once this is done, we will update the information in the repositories and installed packages.
+
+  yum update -y
+  
+Step 3. We now have the nginx package available for download and installation, which we do next.
+
+  yum install -y nginx
+  
+Step 4. We already have nginx and its dependencies installed.
+To start Nginx for the first time on CentOS 7 we will use systemctl start.
+
+  systemctl start nginx
+  
+Step 5. we configure nginx to start automatically at every system startup
+
+  systemctl enable nginx
+  
+command output: Created symlink from /etc/systemd/system/multi-user.target.wants/nginx.service to /usr/lib/systemd/system/nginx.service.
+
+
+##############
+
+We check that nginx is running.
+
+Step 6.
+
+  systemctl status nginx
+  
+Output:
+
+[root@localhost ~]# systemctl status nginx
+● nginx.service - The nginx HTTP and reverse proxy server
+   Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; vendor preset: disabled)
+   Active: active (running) since Sat 2020-12-12 01:02:15 CET; 5min ago
+ Main PID: 70689 (nginx)
+   CGroup: /system.slice/nginx.service
+           ├─70689 nginx: master process /usr/sbin/nginx
+           ├─70690 nginx: worker process
+           ├─70691 nginx: worker process
+           ├─70692 nginx: worker process
+           └─70693 nginx: worker process
+
+Dec 12 01:02:14 localhost.localdomain systemd[1]: Starting The nginx HTTP and reverse proxy server...
+Dec 12 01:02:15 localhost.localdomain nginx[70684]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+Dec 12 01:02:15 localhost.localdomain nginx[70684]: nginx: configuration file /etc/nginx/nginx.conf test is successful
+Dec 12 01:02:15 localhost.localdomain systemd[1]: Started The nginx HTTP and reverse proxy server.
+
+  
+
+  
