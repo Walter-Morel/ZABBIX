@@ -1,0 +1,35 @@
+Crear un FileSystem.
+
+Step 1. Primero iniciamos la particion suponiendo que la unidad es /dev/sda2
+
+	pvcreate /dev/sda2
+	
+Step 2. creamos un grupo de volumenes llamado vgZabbix asociado a la unidad /dev/sda2
+
+	vgcreate vgZabbix /dev/sda2
+	vgchange -a y vgZabbix
+	
+Step 3. Creamos un volumen logico
+
+	lvcreate -L 10G -n lv_ZBX vgZabbix
+	
+Step 4. damos formato
+
+	mkfs.xfs /dev/vgZabbix/lv_ZBX
+	
+Step 5. creamos el directorio en donde posteriormente se instalara zabbix
+
+	mkdir -p /ZABBIX
+	
+Step 6. Editamos el fichero /etc/fstab para que la particion se monte de forma automatica, añadimos la siguiente linea.
+
+	/dev/mapper/vgZabbix-lv_ZBX/ZABBIX				xfs			defaults		00
+	
+Step 7. Por ultimo montamos
+
+	mount -a
+	
+Para concluir comprobamos que todo ha ido bien ejecutamos:
+
+	mount| grep vgZabbix
+	df -PTh

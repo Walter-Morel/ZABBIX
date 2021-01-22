@@ -1,0 +1,1 @@
+Este agente de zabbix fue instalado en centos 7 corriendo con nginx y postgresql como bbdd

@@ -1,0 +1,11 @@
+Instalando postgresql===
+
+
+Step 1. Descargamos el paquete postgresql y lo descomprimimos
+
+	wget https://ftp.postgresql.org/pub/source/v9.6.3/postgresql-9.6.3.tar.gz
+	
+	tar -xzvf postgresql-9.6.3.tar.gz
+	
+
+	
